@@ -6,29 +6,29 @@
 > 🚀 Powered by the [Deepnox Team](https://deepnox.io), 🇫🇷.
 > 
 
-**Contributing 🙂 and/or [sponsoring]((https://github.com/sponsors/deepnox-io)) 🥰 are welcome! **
+**Contributing 🙂 and/or [sponsoring]((https://github.com/sponsors/deepnox-io)) 🥰 are welcome!**
 
 ## Table of Contents
 
-* [Synopsis](#synopsis)
-* [Requirements](#requirements)
-  * [Create a secret to store security settings of the database](#requirements-secretstore) 
-  * [Create a volume to persist your configuration and various data](#requirements-volume)
-* [Basic usage](#basic-usage)
-* [Advanced usage](#advanced-usage)
-* [Installation](#installation)
-* [Build](#build)
-* [Tests](#tests)
-* [Compatibility](#compatibility)
-* [History](#history)
-* [Issues](#issues)
-* [Found a bug?](#found-a-bug)
-* [Contributing](#contributing)
-* [Resources](#resources)
-* [Credits](#credits)
-* [❤️ Support our work!](#support-out-work)
-* [History](#history)
-* [License](#license)
+- [Synopsis](#synopsis)
+- [Requirements](#requirements)
+  - [Create a secret to store security settings of the database](#requirements-secretstore) 
+  - [Create a volume to persist your configuration and various data](#requirements-volume)
+- [Basic usage](#basic-usage)
+- [Advanced usage](#advanced-usage)
+- [Installation](#installation)
+- [Build](#build)
+- [Tests](#tests)
+- [Compatibility](#compatibility)
+- [History](#history)
+- [Issues](#issues)
+- [Found a bug?](#found-a-bug)
+- [Contributing](#contributing)
+- [Resources](#resources)
+- [Credits](#credits)
+- [❤️ Support our work!](#support-out-work)
+- [History](#history)
+- [License](#license)
 
 ## Synopsis 
 
