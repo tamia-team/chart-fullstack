@@ -1,12 +1,12 @@
-# deepnox/helm-consistency-fullstack
+# deepnox/consistency-helm-fullstack
 
 > 
 > A generic Helm chart to deploy a standardized full stack application: a frontend app, a backend app and a database.
 > 
 > 🚀 Powered by the [Deepnox Team](https://deepnox.io), 🇫🇷.
 > 
-> **Contributing 🙂 and/or [sponsoring]((https://github.com/sponsors/deepnox-io)) 🥰 are welcome! **
-> 
+
+**Contributing 🙂 and/or [sponsoring]((https://github.com/sponsors/deepnox-io)) 🥰 are welcome! **
 
 ## Table of Contents
 
@@ -143,12 +143,11 @@ Please refer to project's style guidelines and guidelines for submitting patches
 
 - [Bibin Wilson](https://devopscube.com/author/bibinwilson/)
 
-## <a href="support-out-work" ❤️ Support our work!
+## <a href="support-out-work" /> ❤️ Support our work!
 
 You can help out by sponsoring the [the Deepnox Team](https://deepnox.io)'s work directly here: [:heart: Sponsor](https://github.com/sponsors/deepnox-io)
 
 Take a look at [this article](https://opensource.guide/how-to-contribute/#communicating-effectively) for more information.
-
 
 ## License
 
