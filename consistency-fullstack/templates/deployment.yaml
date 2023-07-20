@@ -1,0 +1,123 @@
+{{- $global := . -}}
+{{- $namespace := .Release.Namespace -}}
+{{- range $stack, $values := $global.Values.stacks }}
+---
+{{- $stackName := include "stack.name" (list $global $stack) }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $stackName }}
+  labels:
+    {{- /* - include "stacks.back.metadata.labels" . | nindent 4 */}}
+    app: {{ $stackName }}
+    layer: {{ include "stack.settings" (list $global $stack) }}
+spec:
+  replicas: {{ default $values.spec.replicas 2 }}
+  selector:
+    matchLabels:
+      app: {{ $stackName }}
+  template:
+    metadata:
+      labels:
+        app: {{ $stackName }}
+    spec:
+      containers:
+      - image: {{ $values.image.name }}
+        imagePullPolicy: {{ $values.image.imagePullPolicy }}
+        name: {{ $stackName }}
+        {{- if $values.image.command }}
+        command: {{ toYaml $values.image.command | nindent 10 }}
+        {{- end }}
+        {{- if $values.image.args }}
+        args: {{ $values.image.args | toYaml | nindent 10 }}
+        {{- end }}
+        {{- if $values.image.ports }}
+        ports:
+          {{- if $values.image.ports.containerPort }}
+          - containerPort: {{ $values.image.ports.containerPort }}
+          {{- end }}
+        {{- end }}
+        {{- if $values.image.env }}
+        env:
+          {{- $values.image.env | toYaml | nindent 10 }}
+       {{- end }}
+{{- end }}
+---
+{{- if eq "mongo" (lower (trim .Values.database.settings.type)) }}
+{{- if $global.Values.database }}
+# @see: https://devopscube.com/deploy-mongodb-kubernetes/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mongo
+  name: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - image: mongo
+        name: mongo
+        args: ["--dbpath","/data/db"]
+        livenessProbe:
+          exec:
+            command:
+              - mongo
+              - --disableImplicitSessions
+              - --eval
+              - "db.adminCommand('ping')"
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        readinessProbe:
+          exec:
+            command:
+              - mongo
+              - --disableImplicitSessions
+              - --eval
+              - "db.adminCommand('ping')"
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        {{- if $global.database.image.env }}
+        env:
+        {{- if $global.database.image.env.secrets }}
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ $global.database.image.env.secrets }}
+              key: username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ $global.database.image.env.secrets }}
+              key: password
+        {{- endif }}
+        {{- endif }}
+        {{- if and .Values.database.image .Values.database.image.volumeMounts }}
+        volumeMounts:
+        - name: "mongo-data-dir"
+          mountPath: "/data/db"
+        {{- end }}
+      {{- if .Values.database.volumes }}
+      volumes:
+      - name: "mongo-data-dir"
+        persistentVolumeClaim:
+          claimName: "pvc"
+      {{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "stacks.back.name" . }}-test-connection"
+  labels:
+    {{ .Values.stacks.back.metadata.labels}}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "stacks.back.name" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
