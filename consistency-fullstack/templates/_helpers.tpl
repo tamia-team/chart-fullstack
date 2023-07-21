@@ -26,7 +26,7 @@ Variable: layer name
   {{- $top := index . 0 -}}
   {{- $layer := index . 1 -}}
   {{- $settings := get $top.Values.stacks $layer }}
-  {{- default $settings.name -}}
+  {{- default $top.Chart.Name -}}
 {{- end }}
 
 

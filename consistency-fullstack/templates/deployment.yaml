@@ -1,5 +1,6 @@
 {{- $global := . -}}
 {{- $namespace := .Release.Namespace -}}
+{{- $env := default .Values.env "dev" }}
 {{- range $stack, $values := $global.Values.stacks }}
 ---
 {{- $stackName := include "stack.name" (list $global $stack) }}
@@ -8,9 +9,11 @@ kind: Deployment
 metadata:
   name: {{ $stackName }}
   labels:
-    {{- /* - include "stacks.back.metadata.labels" . | nindent 4 */}}
     app: {{ $stackName }}
-    layer: {{ include "stack.settings" (list $global $stack) }}
+    env: {{ $env }}
+    {{- if and $values.metadata $values.metadata.labels }}
+    {{ $values.metadata.labels | toYaml | nindent 4 }}
+    {{- end }}
 spec:
   replicas: {{ default $values.spec.replicas 2 }}
   selector:
@@ -93,27 +96,27 @@ spec:
           timeoutSeconds: 5
           successThreshold: 1
           failureThreshold: 6
-        {{- if $global.database.image.env }}
+        {{- if $global.Values.database.image.env }}
         env:
-        {{- if $global.database.image.env.secrets }}
+        {{- if $global.Values.database.image.env.secrets }}
         - name: MONGO_INITDB_ROOT_USERNAME
           valueFrom:
             secretKeyRef:
-              name: {{ $global.database.image.env.secrets }}
+              name: {{ $global.Values.database.image.env.secrets }}
               key: username
         - name: MONGO_INITDB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ $global.database.image.env.secrets }}
+              name: {{ $global.Values.database.image.env.secrets }}
               key: password
-        {{- endif }}
-        {{- endif }}
-        {{- if and .Values.database.image .Values.database.image.volumeMounts }}
+        {{- end }}
+        {{- end }}
+        {{- if and $global.Values.database.image $global.Values.database.image.volumeMounts }}
         volumeMounts:
         - name: "mongo-data-dir"
           mountPath: "/data/db"
         {{- end }}
-      {{- if .Values.database.volumes }}
+      {{- if $global.Values.database.volumes }}
       volumes:
       - name: "mongo-data-dir"
         persistentVolumeClaim:
