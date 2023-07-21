@@ -1,0 +1,43 @@
+stacks:
+  back:
+    suffix: back
+    image:
+      provider: docker.io
+      organization: deepnox
+      name: org-soummane-backend
+      tag: dev
+      imagePullPolicy: Always
+      ports:
+        containerPort: 8000
+      env:
+        - name: DATABASE_URL
+          value: mongodb://org-oucala-db:27017/oucala
+    metadata:
+      labels:
+        env: dev
+    spec:
+      replicas: 1
+
+  front:
+    suffix: app
+    image:
+      provider: docker.io
+      organization: deepnox
+      name: org-soummane-frontend
+      tag: dev
+      imagePullPolicy: Always
+    metadata:
+      labels:
+        env: dev
+    spec:
+      replicas: 1
+
+database:
+  settings:
+    type: mongo
+  image:
+    env:
+      secrets: mongo-creds
+    volumeMounts:
+#  volumes:
+#    - "..."
