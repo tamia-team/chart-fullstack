@@ -1,12 +1,12 @@
-# deepnox/consistency-helm-fullstack
+# team-tamia/team-tamia-oss-chart-fullstack
 
 > 
 > A generic Helm chart to deploy a standardized full stack application: a frontend app, a backend app and a database.
 > 
-> 🚀 Powered by the [Deepnox Team](https://deepnox.io), 🇫🇷.
+> 🚀 Powered by the [Tamia Team](https://tamia.team), 🇫🇷.
 > 
 
-**Contributing 🙂 and/or [sponsoring]((https://github.com/sponsors/deepnox-io)) 🥰 are welcome!**
+**Contributing 🙂 and/or [sponsoring]((https://github.com/sponsors/tamia-team)) 🥰 are welcome!**
 
 ## Table of Contents
 
@@ -113,7 +113,7 @@ Please refer to [CHANGELOG](./CHANGELOG.md)
 
 ## <a name="issues"> Issues
 
-Feel free to [submit issues](https://github.com/deepnox/helm-consistency-fullstack/issues) and enhancement requests.
+Feel free to [submit issues](https://github.com/tamia-team/team-tamia-oss-chart-fullstack/issues) and enhancement requests.
 
 ## Found a bug?
 
@@ -145,14 +145,54 @@ Please refer to project's style guidelines and guidelines for submitting patches
 
 ## <a href="support-out-work" /> ❤️ Support our work!
 
-You can help out by sponsoring the [the Deepnox Team](https://deepnox.io)'s work directly here: [:heart: Sponsor](https://github.com/sponsors/deepnox-io)
+You can help out by sponsoring the [the Deepnox Team](https://tamia-team)'s work directly here: [:heart: Sponsor](https://github.com/sponsors/tamia-team)
 
 Take a look at [this article](https://opensource.guide/how-to-contribute/#communicating-effectively) for more information.
 
 ## License
 
 >
-> Copyright 2023 [Deepnox SAS](https://deepnox.io), France
+> Copyright 2023 [Tamia SAS](https://tamia.team), Saint-Etienne 42100, France # tamia-team/oss-imagemaker
+
+>
+> An open source set of utilities to simplify and improve making image to run in a containers context. 
+>
+> 🚀 Powered by the [Tamia Team](https://tamia.team).
+>
+
+## Synopsis
+
+An open source set of utilities to simplify and improve making image to run in a containers context.
+Useful to build adapted and optimized images for multiple environments: local devel, staging, production...
+
+## License
+
+>
+> Copyright 2023 [Tamia SAS](https://tamia.team), Saint-Etienne 42100, France 🇫🇷
+>
+> Permission is hereby granted, free of charge, to any person obtaining a copy 
+> of this software and associated documentation files (the “Software”), to 
+> deal in the Software without restriction, including without limitation the 
+> rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+> sell copies of the Software, and to permit persons to whom the Software 
+> is furnished to do so, subject to the following conditions:
+>
+> The above copyright notice and this permission notice shall be included in 
+> all copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+> FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+>
+> Except as contained in this notice, the name of the "Tamia SAS" shall not
+> be used in advertising or otherwise to promote the sale, use or other dealings
+> in this Software without prior written authorization from the Tamia SAS company.
+>
+
+
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the “Software”), to
